@@ -1,8 +1,6 @@
 import React from "react";
 import {
   TraitCategory,
-  TraitOption,
-  SelectedTraits,
   TraitCategoryName,
 } from "@/types";
 import TraitButton from "./TraitButton";

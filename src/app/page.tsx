@@ -1,11 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Shuffle } from "lucide-react";
-
 import ApeRenderer from "@/components/ApeRenderer";
-import TraitSelectorGroup from "@/components/TraitSelectorGroup";
 import DownloadButton from "@/components/DownloadButton";
-// shadcn button
 import { ALL_TRAIT_CATEGORIES, getDefaultTraits } from "@/data/traits";
 import { SelectedTraits, TraitCategoryName } from "@/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -33,8 +30,18 @@ export default function Home() {
     setSelectedTraits(newTraits as SelectedTraits);
   };
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 flex flex-col">
-      <main className="flex-grow container mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8">
+    <div className="min-h-screen bg-[#0A0A0A] text-zinc-100 flex flex-col relative">
+      {/* Add the noise background */}
+      <div
+        className="absolute inset-0  pointer-events-none"
+        style={{
+          backgroundImage: 'url("/noise-dark.webp")',
+          backgroundRepeat: "repeat",
+       
+        }}
+      />
+
+      <main className="flex-grow container mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 relative z-10">
         {/* Left Column: Controls & Randomize Button */}
         <div className="lg:w-2/3 order-2 lg:order-1">
           <div className="flex justify-end mb-6">

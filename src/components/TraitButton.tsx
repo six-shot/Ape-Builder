@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { TraitOption } from "@/types";
-import { cn } from "@/lib/utils";
+
 
 interface TraitButtonProps {
   option: TraitOption;
