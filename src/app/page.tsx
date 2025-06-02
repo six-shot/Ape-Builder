@@ -23,9 +23,9 @@ export default function Home() {
 
   const handleRandomize = () => {
     const newTraits: Partial<SelectedTraits> = {};
-    ALL_TRAIT_CATEGORIES.forEach((category) => {
-      const randomIndex = Math.floor(Math.random() * category.options.length);
-      newTraits[category.id] = category.options[randomIndex].id;
+    ALL_TRAIT_CATEGORIES.forEach(({ id, options }) => {
+      const randomIndex = Math.floor(Math.random() * options.length);
+      newTraits[id] = options[randomIndex].id;
     });
     setSelectedTraits(newTraits as SelectedTraits);
   };
@@ -37,7 +37,6 @@ export default function Home() {
         style={{
           backgroundImage: 'url("/noise-dark.webp")',
           backgroundRepeat: "repeat",
-       
         }}
       />
 
@@ -54,7 +53,12 @@ export default function Home() {
             </button>
           </div>
 
-          <Tabs defaultValue={activeTab} className="w-full">
+          <Tabs
+            defaultValue={activeTab}
+            value={activeTab}
+            onValueChange={(value) => setActiveTab(value as TraitCategoryName)}
+            className="w-full"
+          >
             <div className="flex gap-6">
               {/* Vertical Tabs List */}
               <TabsList className="flex flex-col h-fit bg-zinc-900/80 rounded-lg p-2 gap-2">
