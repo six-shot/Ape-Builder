@@ -1,22 +1,27 @@
-
-import React from 'react';
-import { SelectedTraits, TraitOption, TRAIT_CATEGORIES_ORDER } from '@/types';
-import { ALL_TRAIT_CATEGORIES } from '@/data/traits';
+import React from "react";
+import { SelectedTraits, TraitOption, TRAIT_CATEGORIES_ORDER } from "@/types";
+import { ALL_TRAIT_CATEGORIES } from "@/data/traits";
 
 interface ApeRendererProps {
   selectedTraits: SelectedTraits;
   size?: number;
 }
 
-const ApeRenderer: React.FC<ApeRendererProps> = ({ selectedTraits, size = 300 }) => {
-  const getTraitOption = (categoryName: keyof SelectedTraits, optionId: string): TraitOption | undefined => {
-    const category = ALL_TRAIT_CATEGORIES.find(c => c.id === categoryName);
-    return category?.options.find(opt => opt.id === optionId);
+const ApeRenderer: React.FC<ApeRendererProps> = ({
+  selectedTraits,
+  size = 300,
+}) => {
+  const getTraitOption = (
+    categoryName: keyof SelectedTraits,
+    optionId: string
+  ): TraitOption | undefined => {
+    const category = ALL_TRAIT_CATEGORIES.find((c) => c.id === categoryName);
+    return category?.options.find((opt) => opt.id === optionId);
   };
 
   return (
     <div
-      className="relative bg-slate-700 rounded-lg shadow-xl overflow-hidden"
+      className="relative bg-slate-800/30 rounded-xl shadow-2xl overflow-hidden border border-slate-700/30"
       style={{ width: size, height: size }}
     >
       {TRAIT_CATEGORIES_ORDER.map((categoryName) => {
@@ -25,8 +30,10 @@ const ApeRenderer: React.FC<ApeRendererProps> = ({ selectedTraits, size = 300 })
 
         const traitOption = getTraitOption(categoryName, selectedOptionId);
         if (!traitOption || !traitOption.imagePath) return null;
-        
-        const categoryData = ALL_TRAIT_CATEGORIES.find(c => c.id === categoryName);
+
+        const categoryData = ALL_TRAIT_CATEGORIES.find(
+          (c) => c.id === categoryName
+        );
 
         return (
           <img
@@ -37,7 +44,7 @@ const ApeRenderer: React.FC<ApeRendererProps> = ({ selectedTraits, size = 300 })
             style={{ zIndex: categoryData?.zIndex }}
             onError={(e) => {
               // Hide broken images
-              e.currentTarget.style.display = 'none';
+              e.currentTarget.style.display = "none";
             }}
           />
         );
