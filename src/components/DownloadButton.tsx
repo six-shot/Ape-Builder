@@ -43,12 +43,8 @@ const DownloadButton: React.FC<DownloadButtonProps> = ({
       const images = await Promise.all(imagePromises);
 
       // Draw each image on the canvas in the correct order
-      images.forEach((img, index) => {
+      images.forEach((img) => {
         if (img) {
-          const categoryName = Object.keys(selectedTraits)[index];
-          const category = ALL_TRAIT_CATEGORIES.find(
-            (c) => c.id === categoryName
-          );
           ctx.globalCompositeOperation = "source-over";
           ctx.drawImage(img, 0, 0, size, size);
         }

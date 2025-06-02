@@ -1,9 +1,4 @@
-import {
-  TraitCategory,
-  TraitOption,
-  TraitCategoryName,
-  SelectedTraits,
-} from "@/types";
+import { TraitCategory, TraitOption, SelectedTraits } from "@/types";
 
 const backgrounds: TraitOption[] = [
   {
