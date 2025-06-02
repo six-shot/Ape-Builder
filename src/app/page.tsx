@@ -40,9 +40,9 @@ export default function Home() {
         }}
       />
 
-      <main className="flex-grow container mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 relative z-10">
+      <main className=" p-4 md:p-8 grid grid-cols-4 gap-10 relative z-10 max-w-[1440px] mx-auto">
         {/* Left Column: Controls & Randomize Button */}
-        <div className="lg:w-2/3 order-2 lg:order-1">
+        <div className="col-span-3">
           <div className="flex justify-end mb-6">
             <button
               onClick={handleRandomize}
@@ -59,14 +59,14 @@ export default function Home() {
             onValueChange={(value) => setActiveTab(value as TraitCategoryName)}
             className="w-full"
           >
-            <div className="flex gap-6">
+            <div className="grid grid-cols-3 gap-10">
               {/* Vertical Tabs List */}
-              <TabsList className="flex flex-col h-fit bg-zinc-900/80 rounded-lg p-2 gap-2">
+              <TabsList className=" col-span-1 flex flex-col h-fit bg-zinc-900/80 rounded-lg p-2 gap-2">
                 {ALL_TRAIT_CATEGORIES.map((category) => (
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className="w-[130px] px-4 py-3 text-left data-[state=active]:bg-[#FBF6C1] data-[state=active]:text-black rounded-md transition-all "
+                    className="w-full px-4 py-3 text-left data-[state=active]:bg-[#FBF6C1] data-[state=active]:text-black rounded-md transition-all "
                   >
                     {category.name}
                   </TabsTrigger>
@@ -74,7 +74,7 @@ export default function Home() {
               </TabsList>
 
               {/* Tabs Content */}
-              <div className="flex-1">
+              <div className="col-span-2">
                 {ALL_TRAIT_CATEGORIES.map((category) => (
                   <TabsContent
                     key={category.id}
@@ -110,11 +110,11 @@ export default function Home() {
         </div>
 
         {/* Right Column: Ape Preview */}
-        <div className="lg:w-1/3 order-1 lg:order-2 flex flex-col items-center lg:items-start lg:sticky lg:top-8">
+        <div className="  w-full  order-1 lg:order-2 flex flex-col items-center lg:items-start lg:sticky ">
           <h2 className="text-3xl font-bold mb-6 text-center lg:text-left text-[#FBF6C1]">
             Your Ape
           </h2>
-          <div className="bg-zinc-900/80 p-6 rounded-2xl shadow-2xl border border-zinc-800">
+          <div className="bg-zinc-900/80 p-6 rounded-2xl shadow-2xl border border-zinc-800 mt-3">
             <ApeRenderer selectedTraits={selectedTraits} size={320} />
             <div className="mt-6 w-full flex justify-center">
               <DownloadButton selectedTraits={selectedTraits} size={320} />
